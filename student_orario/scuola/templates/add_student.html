@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить студента</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить студента</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder="Имя"><br>
+            <input type="text" name="last_name" placeholder="Фамилия"><br>
+            <input type="text" name="group" placeholder="Группа"><br>
+            <input type="password" name="password" placeholder="Пароль"><br>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+</body>
+</html>

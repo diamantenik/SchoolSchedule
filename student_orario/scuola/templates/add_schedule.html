@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить расписание</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить расписание</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <select name="subject_id">
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.name }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="text" name="day_of_week" placeholder="День недели"><br>
+            <input type="time" name="start_time"><br>
+            <input type="time" name="end_time"><br>
+            <input type="text" name="room" placeholder="Кабинет"><br>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+</body>
+</html>

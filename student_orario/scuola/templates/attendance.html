@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Журнал посещаемости</h2>
+<table style="width:100%" border="5">
+    <tr>
+        <th style="width:40%">Студент</th>
+        <th>Дата</th>
+        <th>Статус</th>
+    </tr>
+    {% for attendance in attendances %}
+    <tr style="height:60px">
+        <td>{{ attendance.student.user.first_name }}</td>
+        <td>{{ attendance.date }}</td>
+        <td>{{ attendance.present }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="10">Нет записей в журнале</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Расписание</h2>
+<a href="/media/schedule.pdf" class="btn btn-primary" download>Скачать расписание(PDF)</a>
+<table style="width:100%" border="5">
+    <tr>
+        <th>Дата</th>
+        <th>Предмет</th>
+        <th>Время начала</th>
+        <th>Аудитория</th>
+    </tr>
+    {% for schedule in schedules %}
+    <tr style="height:70px">
+        <td>{{ schedule.day_of_week }}</td>
+        <td>{{ schedule.subject.name }}</td>
+        <td>{{ schedule.start_time }}</td>
+        <td>{{ schedule.room }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">Нет записей в расписании</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
